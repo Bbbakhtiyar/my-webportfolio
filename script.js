@@ -23,3 +23,30 @@ scrollToTopBtn.addEventListener("click", function() {
         behavior: "smooth" 
     });
 });
+
+
+
+// Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+const icon = themeToggle.textContent;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('dark-theme');
+    themeToggle.textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    
+    // Update button icon
+    if (body.classList.contains('dark-theme')) {
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+    }
+});
